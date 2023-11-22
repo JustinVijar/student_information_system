@@ -28,7 +28,7 @@ and copy paste it in our <code>pom.xml</code>.
 </p>
 
 
-<h4>Copy it like this inside the dependencies in <code>pom.xml</code></h4>
+<h4>Copy this inside the dependencies in <code>pom.xml</code></h4>
 
     <!-- https://mvnrepository.com/artifact/com.example/example -->
     <dependency>
