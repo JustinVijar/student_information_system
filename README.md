@@ -17,7 +17,6 @@
 <p>
 This project uses <b>Maven 3</b>.<br>
 The SDK is <b>Oracle OpenJDK Version 20.</b> <br>
-You can clone this on any IDE that supports maven3 and has SDK 20.<br>
 </p>
 
 <h3>For Dependencies</h3>
