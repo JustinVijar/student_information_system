@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 
 public abstract class Utilities {
 
+    // Put the databaseUrl, user and pass in here
     public static final String databaseUrl = "jdbc:mysql://localhost:3306/student_info_sys",
                                 user = "root",
                                 pass = "secret";
