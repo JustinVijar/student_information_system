@@ -40,7 +40,9 @@ public class Login extends Utilities{
 
     private void register() {
         System.out.println("Register");
-        //TODO: Redirect Register Form here
+        Register dialog = new Register();
+        dialog.pack();
+        dialog.setVisible(true);
     }
 
     private void actionLoginButton() {

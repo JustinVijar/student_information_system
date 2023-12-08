@@ -24,11 +24,22 @@ public abstract class Utilities {
         });
     }
 
-    static void centerFrameOnScreen(JFrame frame) {
+
+
+    void centerFrameOnScreen(JFrame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int centerX = (int) screenSize.getWidth() / 2 - frame.getWidth() / 2;
         int centerY = (int) screenSize.getHeight() / 2 - frame.getHeight() / 2;
         frame.setLocation(centerX, centerY);
     }
+
+    static void centerFrameOnScreen(JDialog dialog) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int centerX = (int) screenSize.getWidth() / 2 - dialog.getWidth() / 2;
+        int centerY = (int) screenSize.getHeight() / 2 - dialog.getHeight() / 2;
+        dialog.setLocation(centerX, centerY);
+    }
+
+
 
 }
