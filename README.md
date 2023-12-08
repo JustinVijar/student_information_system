@@ -5,7 +5,7 @@
 <h2>Group members</h2>
 
 <ol>
-  <li>User Registration - Justin Vijar</li>
+  <li>User Registration - Justin Vijar (psg4220)</li>
   <li>Student Profile and Enrollment - Zennah Asumbrado</li>
   <li>Course management and grading - Vincent Nator, Mhart Khiss Degollacion</li>
   <li>Transcripts and academic records - Garces</li>
