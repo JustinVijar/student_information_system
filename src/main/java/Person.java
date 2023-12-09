@@ -55,17 +55,5 @@ public class Person {
         this.email = email;
     }
 
-//    private void contactNumberExceptionCheck() {
-//        if (contactNumber.length() != 10 && contactNumber.length() != 11) {
-//            throw new ContactNumberFormatException("Contact Number format not valid");
-//        }
-//
-//        for (char c : contactNumber.toCharArray()) {
-//            if (!Character.isDigit(c)) {
-//                throw new ContactNumberFormatException("Contact Number must be a number");
-//            }
-//        }
-//    }
-
 }
 
