@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Justin's_Branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "346",
-    "git-widget-placeholder": "Justin's__Branch",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "/home/psg420/IdeaProjects/student_information_system",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -187,7 +187,8 @@
     <MESSAGE value="Changes Were Made" />
     <MESSAGE value="Added Login GUI and Functionality.&#10;Added Utilities class" />
     <MESSAGE value="Edits in Utilities.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edits in Utilities.java" />
+    <MESSAGE value="Added User Registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added User Registration" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
