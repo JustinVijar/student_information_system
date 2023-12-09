@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class Login extends Utilities{
     private JPanel mainPanel;
@@ -33,13 +34,25 @@ public class Login extends Utilities{
 
     private void login() {
         UserDatabaseManager userDatabaseManager = new UserDatabaseManager(Utilities.databaseUrl, Utilities.user, Utilities.pass);
-        int confirmation = userDatabaseManager.loginUser(txtUsername.getText(), txtPassword.getPassword());
+        int confirmation = 0;
+        try {
+            confirmation = userDatabaseManager.loginUser(txtUsername.getText(), txtPassword.getPassword());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this.mainPanel, "An error occured:\n" + e, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        if (confirmation == -1) {
+            JOptionPane.showMessageDialog(
+                    this.mainPanel,
+                    "Username or Password is invalid.",
+                    "ERROR",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
         System.out.println(confirmation);
         //TODO: Redirect SIS Form here
     }
 
     private void register() {
-        System.out.println("Register");
         Register dialog = new Register();
         dialog.pack();
         dialog.setVisible(true);

@@ -12,13 +12,8 @@ public class SQLConnection {
         this.password = password;
     }
 
-    public Connection getDatabaseConnection() {
-        try {
-            return DriverManager.getConnection(databaseURL, username, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public Connection getDatabaseConnection() throws SQLException{
+        return DriverManager.getConnection(databaseURL, username, password);
     }
 
 }

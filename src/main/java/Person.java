@@ -6,7 +6,8 @@ public class Person {
     private String contactNumber;
     private String email;
 
-    public Person(String firstName, String middleName, String lastName, String contactNumber, String email) {
+    public Person(String firstName, String middleName, String lastName, String contactNumber, String email)
+            throws NullPointerException{
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -53,4 +54,18 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
+
+//    private void contactNumberExceptionCheck() {
+//        if (contactNumber.length() != 10 && contactNumber.length() != 11) {
+//            throw new ContactNumberFormatException("Contact Number format not valid");
+//        }
+//
+//        for (char c : contactNumber.toCharArray()) {
+//            if (!Character.isDigit(c)) {
+//                throw new ContactNumberFormatException("Contact Number must be a number");
+//            }
+//        }
+//    }
+
 }
+

@@ -1,5 +1,6 @@
 public class User {
 
+    private int id;
     private String username, password;
     private boolean isFaculty;
 
@@ -7,6 +8,21 @@ public class User {
         this.username = username;
         this.password = password;
         this.isFaculty = isFaculty;
+    }
+
+    public User(int id, String username, String password, boolean isFaculty) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.isFaculty = isFaculty;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -29,7 +45,12 @@ public class User {
         return isFaculty;
     }
 
+    public boolean getFaculty() {
+        return isFaculty;
+    }
+
     public void setFaculty(boolean faculty) {
         isFaculty = faculty;
     }
+
 }
