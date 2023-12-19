@@ -95,14 +95,7 @@ public class Register extends JDialog{
     }
 
     private User getUser(){
-
-        // >:(
-        boolean isFaculty = false;
-
-        if (facultyRadioButton.isSelected()) {
-            isFaculty = true;
-        }
-
+        boolean isFaculty = facultyRadioButton.isSelected();
         return new User(
                 txtUsername.getText(),
                 new String(passwordField.getPassword()),
