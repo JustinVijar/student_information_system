@@ -94,15 +94,15 @@ public class Register extends JDialog{
 
     }
 
-    private User getUser() throws NullPointerException{
+    private User getUser(){
+
+        // >:(
         boolean isFaculty = false;
-        ButtonModel selectedButtonModel = studentFacultyGroup.getSelection();
-        if (selectedButtonModel != null) {
-            JRadioButton selectedButton = (JRadioButton) studentFacultyGroup.getElements().nextElement();
-            if (selectedButton == facultyRadioButton) {
-                isFaculty = true;
-            }
+
+        if (facultyRadioButton.isSelected()) {
+            isFaculty = true;
         }
+
         return new User(
                 txtUsername.getText(),
                 new String(passwordField.getPassword()),
@@ -227,4 +227,9 @@ public class Register extends JDialog{
         // add your code here if necessary
         dispose();
     }
+
+    public static void main(String[] args) {
+
+    }
+
 }

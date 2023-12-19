@@ -7,9 +7,10 @@ public class UserDatabaseManager extends SQLConnection {
     }
 
     /**
+     * -1 for login fail, 0 for student login, 1 for faculty login
      * @param user String username of the user
      * @param pass Character array of the user's password
-     * @return -1 is fail, 0 is student login, 1 is faculty login
+     * @return Integer
      */
     public int loginUser(String user, char[] pass) throws SQLException {
         String query = "SELECT user_id, is_faculty FROM user WHERE username = ? AND password = ?";
@@ -28,6 +29,12 @@ public class UserDatabaseManager extends SQLConnection {
         }
     }
 
+    /**
+     * Retrieves the user using username.
+     * @param username String username
+     * @return  User object
+     * @throws SQLException
+     */
     public User retrieveUser(String username) throws SQLException {
         String userQuery = "SELECT * FROM user WHERE username = ?";
         Connection connection = getDatabaseConnection();
@@ -45,6 +52,13 @@ public class UserDatabaseManager extends SQLConnection {
             return null;
         }
     }
+
+    /**
+     * Finds the User using the user_id
+     * @param userId The user_id
+     * @return User object
+     * @throws SQLException
+     */
 
     public User retrieveUser(int userId) throws SQLException {
         String userQuery = "SELECT * FROM user WHERE user_id = ?";
@@ -65,9 +79,13 @@ public class UserDatabaseManager extends SQLConnection {
         }
     }
 
-
-    public Person retrievePerson(String username)
-            throws SQLException {
+    /**
+     * Finds the Person in a database using the username.
+     * @param username String username of the user
+     * @return Returns a Person object
+     * @throws SQLException
+     */
+    public Person retrievePerson(String username) throws SQLException {
         String query = "SELECT * FROM " + (retrieveUser(username).isFaculty() ? "faculty" : "student") + " WHERE user_id = ?";
 
         try (Connection connection = getDatabaseConnection();
@@ -89,6 +107,11 @@ public class UserDatabaseManager extends SQLConnection {
         }
     }
 
+    /**
+     * @param user User object
+     * @return returns the generated user_id of the registered user. Returns -1 if not successful.
+     * @throws SQLException
+     */
     public int registerUser(User user) throws SQLException {
         String userQuery = "INSERT INTO user(username, password, is_faculty) VALUES (?,?,?)";
         Connection connection = getDatabaseConnection();
@@ -114,6 +137,13 @@ public class UserDatabaseManager extends SQLConnection {
         return -1;
     }
 
+    /**
+     *
+     * @param userId Integer user_id of person
+     * @param person Person object
+     * @return returns true if successful, false otherwise
+     * @throws SQLException
+     */
     public boolean registerPerson(int userId, Person person) throws SQLException {
         String personQuery = "INSERT INTO "+(retrieveUser(userId).isFaculty() ? "faculty" : "student")+
                 "(first_name,middle_name,last_name,contact_number,email,user_id) " +
@@ -138,6 +168,13 @@ public class UserDatabaseManager extends SQLConnection {
         return false;
     }
 
+    /**
+     * Registers both user and person in the database
+     * @param user User Object
+     * @param person Person Object
+     * @return true if successfully registered, failed otherwise.
+     * @throws SQLException
+     */
     public boolean registerUserPerson(User user, Person person) throws SQLException {
         int userId = registerUser(user);
         return (userId != -1) && registerPerson(userId, person);
