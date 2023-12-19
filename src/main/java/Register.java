@@ -39,9 +39,9 @@ public class Register extends JDialog{
                     }
 
                     if (databaseManager.retrieveUser(txtUsername.getText()) == null) {
-                        lbldoesUsernameExist.setText("Username already exist");
+                        lbldoesUsernameExist.setText("Username Available");
                     } else {
-                        lbldoesUsernameExist.setText("Username available");
+                        lbldoesUsernameExist.setText("Username already exist");
                     }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
@@ -101,7 +101,6 @@ public class Register extends JDialog{
                 new String(passwordField.getPassword()),
                 isFaculty
         );
-
     }
 
     private Person getPerson() {
