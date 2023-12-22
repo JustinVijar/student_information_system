@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package schoolmanagementsystem;
+package com.javachips.studentinformationsystem;
 
 /**
  *
@@ -107,30 +107,30 @@ public class studentsmodule extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Addstu obj =new Addstu();
-        obj.setVisible(true);
+//        Addstu obj =new Addstu();
+//        obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        editstu obj =new editstu();
-        obj.setVisible(true);
+//        editstu obj =new editstu();
+//        obj.setVisible(true);
         dispose();
                
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        SDStud obj =new SDStud();
-        obj.setVisible(true);
+//        SDStud obj =new SDStud();
+//        obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        welcome obj =new welcome();
-        obj.setVisible(true);
+//        welcome obj =new welcome();
+//        obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 

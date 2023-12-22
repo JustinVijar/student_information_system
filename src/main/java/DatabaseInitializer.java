@@ -1,8 +1,10 @@
+package com.javachips.studentinformationsystem;
+
 import java.sql.*;
 
 public class DatabaseInitializer {
 
-    private SQLConnection sqlConnection;
+    private final SQLConnection sqlConnection;
 
     DatabaseInitializer(SQLConnection sqlConnection) {
         this.sqlConnection = sqlConnection;

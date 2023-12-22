@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package schoolmanagementsystem;
+package com.javachips.studentinformationsystem;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -262,9 +262,9 @@ public class reportcard extends javax.swing.JFrame {
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
-        welcome obj =new welcome();
-        obj.setVisible(true);
-        dispose();
+//        welcome obj =new welcome();
+//        obj.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
 
     /**
