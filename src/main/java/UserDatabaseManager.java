@@ -1,5 +1,19 @@
-import java.sql.*;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.javachips.studentinformationsystem;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/**
+ *
+ * @author psg420
+ */
 public class UserDatabaseManager extends SQLConnection {
 
     UserDatabaseManager(String databaseURL, String username, String password) {
@@ -15,7 +29,7 @@ public class UserDatabaseManager extends SQLConnection {
     public int loginUser(String user, char[] pass) throws SQLException {
         String query = "SELECT user_id, is_faculty FROM user WHERE username = ? AND password = ?";
         try (Connection connection = getDatabaseConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, new String(pass));
             ResultSet resultSet = preparedStatement.executeQuery();

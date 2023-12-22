@@ -1,3 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.javachips.studentinformationsystem;
+
+/**
+ *
+ * @author psg420
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,36 +20,12 @@ public abstract class Utilities {
                                 user = "root",
                                 pass = "secret";
 
-    abstract void performActionEnter();
-    void actionEnter(JPanel mainPanel) {
-        InputMap inputMap = mainPanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "enter");
 
-        ActionMap actionMap = mainPanel.getActionMap();
-        actionMap.put("enter", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                performActionEnter();
-            }
-        });
-    }
-
-
-
-    void centerFrameOnScreen(JFrame frame) {
+    static void centerFrameOnScreen(JFrame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int centerX = (int) screenSize.getWidth() / 2 - frame.getWidth() / 2;
         int centerY = (int) screenSize.getHeight() / 2 - frame.getHeight() / 2;
         frame.setLocation(centerX, centerY);
     }
-
-    static void centerFrameOnScreen(JDialog dialog) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int centerX = (int) screenSize.getWidth() / 2 - dialog.getWidth() / 2;
-        int centerY = (int) screenSize.getHeight() / 2 - dialog.getHeight() / 2;
-        dialog.setLocation(centerX, centerY);
-    }
-
-
 
 }

@@ -1,5 +1,14 @@
-public class Person {
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.javachips.studentinformationsystem;
 
+/**
+ *
+ * @author psg420
+ */
+public class Person {
     private String firstName;
     private String middleName;
     private String lastName;
@@ -56,4 +65,3 @@ public class Person {
     }
 
 }
-

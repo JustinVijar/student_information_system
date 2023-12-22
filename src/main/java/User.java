@@ -1,5 +1,14 @@
-public class User {
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.javachips.studentinformationsystem;
 
+/**
+ *
+ * @author psg420
+ */
+public class User {
     private int id;
     private String username, password;
     private boolean isFaculty;
