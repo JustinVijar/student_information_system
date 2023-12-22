@@ -12,12 +12,7 @@
 </ol>
 
 <h2>Notes</h2>
-<h2>Use IntelliJ IDEA for compatability</h2>
 <h3>Project Information</h3>
-<p>
-This project uses <b>Maven 3</b>.<br>
-The SDK is <b>Oracle OpenJDK Version 20.</b> <br>
-</p>
 
 <h3>For Dependencies</h3>
 <p>
