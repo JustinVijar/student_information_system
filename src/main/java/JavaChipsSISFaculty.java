@@ -4,7 +4,7 @@
  */
 package student_information_system;
 
-import task3.CreateCourse;
+import task3.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -122,6 +122,8 @@ public class JavaChipsSISFaculty extends JFrame {
 //
 //                // Optionally, you can hide the current frame
 //                setVisible(false);
+                InputGrades inputgrades = new InputGrades();
+                inputgrades.setVisible(true);
             }
         });
         
