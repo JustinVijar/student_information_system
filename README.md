@@ -14,6 +14,8 @@
 <h2>Notes</h2>
 <h3>Project Information</h3>
 
+<p>Main Class is JavaChipsAcademyFrame.java </p>
+
 <h3>For Dependencies</h3>
 <p>
 To add dependencies. Go to https://mvnrepository.com/repos/central <br>
