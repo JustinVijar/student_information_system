@@ -4,6 +4,7 @@
  */
 package task3;
 import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Makizz
@@ -15,6 +16,7 @@ public class AddSection extends javax.swing.JFrame {
      */
     public AddSection() {
         initComponents();
+        setTitle("Add Section");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
     }
@@ -97,12 +99,10 @@ public class AddSection extends javax.swing.JFrame {
                 int rowsAffected = statement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    // If the insert was successful, display a success message
-                    System.out.println("Section inserted successfully!");
+                    JOptionPane.showMessageDialog(this, "Section created successfully!");
                     this.dispose();
                 } else {
-                    // If no rows were affected, display a failure message
-                    System.out.println("Failed to insert section.");
+                    JOptionPane.showMessageDialog(this, "Failed to insert section.");
                 }
             }
 
@@ -114,7 +114,7 @@ public class AddSection extends javax.swing.JFrame {
         }
     } else {
         // Display an error message if the section name is empty
-        System.out.println("Section name cannot be empty.");
+        JOptionPane.showMessageDialog(this, "Section name cannot be empty.");
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 

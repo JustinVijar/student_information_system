@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,6 +23,7 @@ public class CreateCourse extends javax.swing.JFrame {
      */
     public CreateCourse() {
         initComponents();
+        setTitle("Create Course");
         populateSectionComboBox();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -174,7 +176,7 @@ public class CreateCourse extends javax.swing.JFrame {
 
     // Validate if required fields are not empty
     if (courseName.isEmpty() || creditsText.isEmpty() || sectionName == null) {
-        System.out.println("Please fill in all required fields.");
+        JOptionPane.showMessageDialog(this, "Please fill in all required fields.");
         return;
     }
 
@@ -205,12 +207,12 @@ public class CreateCourse extends javax.swing.JFrame {
 
             if (rowsAffected > 0) {
                 // If the insert was successful, display a success message
-                System.out.println("Course inserted successfully!");
+                JOptionPane.showMessageDialog(this, "Course created successfully.");
                 // Optionally, you can close the GUI window after successful insert
                 this.dispose();
             } else {
                 // If no rows were affected, display a failure message
-                System.out.println("Failed to insert course.");
+                JOptionPane.showMessageDialog(this, "Failed to create course.");
             }
         }
 
@@ -316,6 +318,7 @@ public class CreateCourse extends javax.swing.JFrame {
             DatabaseConnection.closeConnection(connection);
         }
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateCourse;

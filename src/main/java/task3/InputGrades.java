@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 /**
@@ -23,6 +24,7 @@ public class InputGrades extends javax.swing.JFrame {
      */
     public InputGrades() {
         initComponents();
+        setTitle("Input Grades");
         populateCourseComboBox();
         // Add a DocumentListener to jTextField1
         jTextField1.getDocument().addDocumentListener(new DocumentListener() {
@@ -131,7 +133,7 @@ public class InputGrades extends javax.swing.JFrame {
 
         // Validate if required fields are not empty
         if (studentId.isEmpty() || courseTitle == null || grades.isEmpty()) {
-            System.out.println("Please fill in all required fields.");
+            JOptionPane.showMessageDialog(this, "Please fill in all required fields.");
             return;
         }
 
@@ -161,15 +163,15 @@ public class InputGrades extends javax.swing.JFrame {
 
                     if (rowsAffected > 0) {
                         // If the insert was successful, display a success message
-                        System.out.println("Transcript record inserted successfully!");
+                        JOptionPane.showMessageDialog(this, "Transcript record inserted successfully!");
                         dispose();
                     } else {
                         // If no rows were affected, display a failure message
-                        System.out.println("Failed to insert transcript record.");
+                        JOptionPane.showMessageDialog(this, "Failed to insert transcript record.");
                     }
                 }
             } else {
-                System.out.println("Selected course not found.");
+                JOptionPane.showMessageDialog(this, "Selected course not found.");
             }
 
         } catch (SQLException e) {
