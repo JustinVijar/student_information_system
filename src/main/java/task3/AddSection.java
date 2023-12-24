@@ -15,6 +15,8 @@ public class AddSection extends javax.swing.JFrame {
      */
     public AddSection() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
     /**

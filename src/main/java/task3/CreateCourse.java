@@ -23,6 +23,8 @@ public class CreateCourse extends javax.swing.JFrame {
     public CreateCourse() {
         initComponents();
         populateSectionComboBox();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -41,6 +41,8 @@ public class InputGrades extends javax.swing.JFrame {
                 // Plain text components do not fire these events
             }
         });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
     /**
