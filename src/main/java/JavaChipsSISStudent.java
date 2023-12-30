@@ -91,12 +91,12 @@ public class JavaChipsSISStudent extends JFrame {
                 //you want to make your part, please modify the following lines
                 // to open your class: Change "JavaChipsSISFaculty" to your java class name
                 // don't forget to copy the nav and listeners for smoother navigation on all parts
-                // SwingUtilities.invokeLater(() -> {
-                //     new JavaChipsSISFaculty().setVisible(true);
-                // });
-                //
-                // // Optionally, you can hide the current frame
-                // setVisible(false);
+                 SwingUtilities.invokeLater(() -> {
+                     new StudentProfile().setVisible(true);
+                 });
+                
+                 // Optionally, you can hide the current frame
+                 setVisible(false);
             }
         });
 

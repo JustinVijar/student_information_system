@@ -53,6 +53,9 @@ public class JavaChipsSISFaculty extends JFrame {
         JButton editStudentButton = new JButton("Edit Student");
         JLabel text = new JLabel("                                      ");
         JButton logoutButton = new JButton("Log out");
+        
+        //set button color:
+        homeButton.setBackground(Color.orange);
 
         navigationPanel.add(homeButton);
         navigationPanel.add(manageEnrollmentButton);
@@ -82,12 +85,12 @@ public class JavaChipsSISFaculty extends JFrame {
                 //you want to make your part, please modify the following lines
                 // to open your class: Change "JavaChipsSISFaculty" to your java class name
                 // don't forget to copy the nav and listeners for smoother navigation on all parts
-//                SwingUtilities.invokeLater(() -> {
-//                    new JavaChipsSISFaculty().setVisible(true);
-//                });
-//
-//                // Optionally, you can hide the current frame
-//                setVisible(false);
+                SwingUtilities.invokeLater(() -> {
+                    new ManageEnrollment().setVisible(true);
+                });
+
+                // Optionally, you can hide the current frame
+                setVisible(true);
             }
         });
 

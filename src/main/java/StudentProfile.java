@@ -2,6 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/**
+ *
+ * @author Reuel
+ */
 package student_information_system;
 
 import javax.swing.*;
@@ -14,9 +19,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
-public class StudentTranscript extends JFrame {
+public class StudentProfile extends JFrame {
 
-    public StudentTranscript() {
+    public StudentProfile() {
         setTitle("JavaChips Academy - Student");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1200, 700);
@@ -31,16 +36,11 @@ public class StudentTranscript extends JFrame {
         // Create a panel for information below the navigation
         JPanel informationPanel = new JPanel();
         informationPanel.setLayout(new BorderLayout());
-
-        // Create and add the credentialPanel to the informationPanel
-        JPanel credentialPanel = createCredentialPanel();
-        credentialPanel.setLayout(new GridLayout(2,2));
-        informationPanel.add(credentialPanel, BorderLayout.NORTH);
         
-        // Create and add the gradePanel to the informationPanel
-        JPanel gradePanel = createGradePanel();
-        gradePanel.setLayout(new FlowLayout());
-        informationPanel.add(gradePanel, BorderLayout.CENTER);
+        // Show student information
+        JPanel credentialPanel = createCredentialPanel();
+        credentialPanel.setLayout(new GridLayout(4,2));
+        informationPanel.add(credentialPanel, BorderLayout.NORTH);
 
         mainPanel.add(informationPanel, BorderLayout.CENTER);
 
@@ -61,6 +61,9 @@ public class StudentTranscript extends JFrame {
         JButton transcriptButton = new JButton("Transcript and Academic Records");
         JLabel text = new JLabel("                                      ");
         JButton logoutButton = new JButton("Log out");
+        
+        //set button color:
+        profileButton.setBackground(Color.orange);
 
         navigationPanel.add(homeButton);
         navigationPanel.add(profileButton);
@@ -81,23 +84,20 @@ public class StudentTranscript extends JFrame {
                 setVisible(false);
             }
         });
-        
-        //set button color:
-        transcriptButton.setBackground(Color.orange);
 
         profileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /// If this is your assigned task, and
+                // If this is your assigned task, and
                 //you want to make your part, please modify the following lines
                 // to open your class: Change "JavaChipsSISFaculty" to your java class name
                 // don't forget to copy the nav and listeners for smoother navigation on all parts
                  SwingUtilities.invokeLater(() -> {
                      new StudentProfile().setVisible(true);
                  });
-                
-                 // Optionally, you can hide the current frame
-                 setVisible(false);
+                //
+                // // Optionally, you can hide the current frame
+                // setVisible(false);
             }
         });
 
@@ -108,12 +108,12 @@ public class StudentTranscript extends JFrame {
                 //you want to make your part, please modify the following lines
                 // to open your class: Change "JavaChipsSISFaculty" to your java class name
                 // don't forget to copy the nav and listeners for smoother navigation on all parts
-//                SwingUtilities.invokeLater(() -> {
-//                    new JavaChipsSISFaculty().setVisible(true);
-//                });
-//
-//                // Optionally, you can hide the current frame
-//                setVisible(false);
+                //SwingUtilities.invokeLater(() -> {
+                //     new StudentProfile().setVisible(true);
+                // });
+                //
+                // // Optionally, you can hide the current frame
+                // setVisible(false);
             }
         });
 
@@ -148,42 +148,108 @@ public class StudentTranscript extends JFrame {
         return navigationPanel;
     }
     
+    
+    
     private JPanel createCredentialPanel() {
         // Retrieve the current student ID from the session
         int currentStudentId = Session.getInstance().getCurrentStudentId();
 
         // Create a panel with GridLayout (4 rows, 2 columns) for displaying credentials
-        JPanel credentialPanel = new JPanel(new GridLayout(2, 4));
+        JPanel credentialPanel = new JPanel(new GridLayout(2, 5));
+        JLabel studentID = new JLabel(String.valueOf(currentStudentId));
 
         // Add labels and values for Student ID, Name, Year Level, and Degree Program
         credentialPanel.add(new JLabel("Student ID:"));
-        credentialPanel.add(new JLabel(String.valueOf(currentStudentId))); // Display the current student ID
+        credentialPanel.add(studentID); // Display the current student ID
 
         String[] studentInfo = getStudentInfoFromDatabase(currentStudentId);
-
+        
+        JButton edit = new JButton("Edit Profile");
+        JTextField name = new JTextField("" + studentInfo[0]);
+        JTextField year = new JTextField("" + studentInfo[3]);
+        JTextField degree = new JTextField(("" + studentInfo[4]));
+        JTextField contact = new JTextField("" + studentInfo[1]);
+        JTextField email = new JTextField("" + studentInfo[2]);
+        
         // Check if student information was retrieved successfully
         if (studentInfo != null) {
-            credentialPanel.add(new JLabel("Year Level:"));
-            credentialPanel.add(new JLabel(studentInfo[1]));
-            
             credentialPanel.add(new JLabel("Name:"));
-            credentialPanel.add(new JLabel(studentInfo[0]));
- 
+            credentialPanel.add(name);
+            
+            credentialPanel.add(new JLabel("Year Level:"));
+            credentialPanel.add(year);
+            
             credentialPanel.add(new JLabel("Degree Program:"));
-            credentialPanel.add(new JLabel(studentInfo[2]));
+            credentialPanel.add(degree);
+            
+            credentialPanel.add(new JLabel("Contact Number:"));
+            credentialPanel.add(contact);
+            
+            credentialPanel.add(new JLabel("Email:"));
+            credentialPanel.add(email);
+            
+            
+            credentialPanel.add(edit);
+           
+            
         } else {
             // Handle the case where student information retrieval failed
             credentialPanel.add(new JLabel("Error retrieving student information"));
             credentialPanel.add(new JLabel(""));
+            
         }
+        
+        edit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String studentId = studentID.getText();
+                String yearLevel = year.getText();
+                String degreeProgram = degree.getText();
+                String contactnum = contact.getText();
+                String emailadd = email.getText();
+
+                // Call a method to update the student in the database
+                // based on the entered information
+                updateProfile(studentId, yearLevel, degreeProgram, emailadd, contactnum);
+            }
+        });
 
         return credentialPanel;
     }
+    
+    private void updateProfile(String studentId, String yearLevel, String degreeProgram, String email, String contact) {
+        // Implement the database update functionality here
+        // Use JDBC to connect to your database and execute an update query
 
+        try (Connection connection = DatabaseConnection.getConnection()){
+            String query = "UPDATE student SET year_level = ?, degree_program = ?, email = ?, contact_number = ? WHERE student_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setString(1, yearLevel);
+                statement.setString(2, degreeProgram);
+                statement.setString(3, email);
+                statement.setString(4, contact);
+                statement.setString(5, studentId);
+
+                // Execute the update query
+                int rowsAffected = statement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    // Update successful
+                    JOptionPane.showMessageDialog(StudentProfile.this, "Student Updated Successfully");
+                } else {
+                    // Update failed
+                    JOptionPane.showMessageDialog(StudentProfile.this, "Failed to Update Student");
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     // Method to retrieve student information from the database
     private String[] getStudentInfoFromDatabase(int studentId) {
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String sql = "SELECT last_name, first_name, middle_name, year_level, degree_program FROM student WHERE student_id = ?";
+            String sql = "SELECT last_name, first_name, middle_name, contact_number, email, year_level, degree_program FROM student WHERE student_id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, studentId);
 
@@ -192,11 +258,14 @@ public class StudentTranscript extends JFrame {
                         String lastName = resultSet.getString("last_name");
                         String firstName = resultSet.getString("first_name");
                         String middleName = resultSet.getString("middle_name");
+                        String contactnum = resultSet.getString("contact_number");
+                        String emailadd = resultSet.getString("email");
                         String yearLevel = resultSet.getString("year_level");
                         String degreeProgram = resultSet.getString("degree_program");
+                        
 
                         // Return an array containing the retrieved information
-                        return new String[]{lastName + ", " + firstName + (middleName != null ? " " + middleName : ""),
+                        return new String[]{lastName + ", " + firstName + (middleName != null ? " " + middleName : ""),contactnum, emailadd, 
                                 yearLevel, degreeProgram};
                     } else {
                         // Return null if the student is not found
@@ -211,77 +280,12 @@ public class StudentTranscript extends JFrame {
         }
     }
 
-    private JPanel createGradePanel() {
-        int studentId = Session.getInstance().getCurrentStudentId();
-        
-        JLabel gap = new JLabel();
-        
-        // Create a panel with BorderLayout
-        JPanel gradePanel = new JPanel(new BorderLayout());
-
-        // Retrieve grade information from the database
-        Object[][] gradeData = getGradeDataFromDatabase(studentId);
-        String[] columnNames = {"Course ID", "Course Title", "Grades"};
-
-        // Create a table model with the retrieved data
-        DefaultTableModel tableModel = new DefaultTableModel(gradeData, columnNames);
-        JTable gradeTable = new JTable(tableModel);
-
-        // Add the table to a scroll pane for scrolling if needed
-        JScrollPane scrollPane = new JScrollPane(gradeTable);
-        gradePanel.add(scrollPane, BorderLayout.CENTER);
-
-        return gradePanel;
-    }
-
-    private Object[][] getGradeDataFromDatabase(int studentId) {
-    try (Connection connection = DatabaseConnection.getConnection()) {
-        // Use TYPE_SCROLL_INSENSITIVE to enable moving the cursor backward
-        String sql = "SELECT t.course_id, c.title, t.grades FROM transcript t "
-                   + "JOIN course c ON t.course_id = c.course_id "
-                   + "WHERE t.student_id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql,
-                ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
-            preparedStatement.setInt(1, studentId);
-
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                // Calculate the number of rows in the result set
-                int rowCount = 0;
-                while (resultSet.next()) {
-                    rowCount++;
-                }
-
-                // Initialize the array to hold data from the result set
-                Object[][] gradeData = new Object[rowCount][3];
-
-                // Reset the result set cursor to the beginning
-                resultSet.beforeFirst();
-
-                // Populate the array with data from the result set
-                int index = 0;
-                while (resultSet.next()) {
-                    gradeData[index][0] = resultSet.getString("course_id");
-                    gradeData[index][1] = resultSet.getString("title");
-                    gradeData[index][2] = resultSet.getString("grades");
-                    index++;
-                }
-
-                return gradeData;
-            }
-        }
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-        // Return an empty array in case of an exception
-        return new Object[0][0];
-    }
-}
-
-    
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new StudentTranscript().setVisible(true);
+            new JavaChipsSISStudent().setVisible(true);
         });
     }
 }
+
 
